@@ -1,0 +1,193 @@
+#include <stdio.h>
+
+int main() {
+    int choice;
+    int r1, c1, r2, c2;
+
+    while (1) {
+        printf("\n===== Matrix Operations =====\n");
+        printf("1. Matrix Addition\n");
+        printf("2. Matrix Subtraction\n");
+        printf("3. Matrix Multiplication\n");
+        printf("4. Matrix Transpose\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: // Matrix Addition
+                printf("Enter row size and column size of first matrix: ");
+                scanf("%d %d", &r1, &c1);
+                printf("Enter row size and column size of second matrix: ");
+                scanf("%d %d", &r2, &c2);
+
+                if (r1 <= 0 || c1 <= 0 || r2 <= 0 || c2 <= 0) {
+                    printf("Invalid matrix dimensions! Rows and columns must be positive.\n");
+} else if (r1 != r2 || c1 != c2) {
+                    printf("Matrix addition is not possible.\n");
+                } else {
+                    int a[r1][c1], b[r2][c2], result[r1][c1];
+
+                    printf("Enter first matrix:\n");
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            scanf("%d", &a[i][j]);
+                        }
+                    }
+
+                    printf("Enter second matrix:\n");
+                    for (int i = 0; i < r2; i++) {
+                        for (int j = 0; j < c2; j++) {
+                            scanf("%d", &b[i][j]);
+                        }
+                    }
+
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            result[i][j] = a[i][j] + b[i][j];
+                        }
+                    }
+
+                    printf("Result:\n");
+for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            printf("%d ", result[i][j]);
+                        }
+                        printf("\n");
+                    }
+                }
+                break;
+
+            case 2: // Matrix Subtraction
+                printf("Enter row size and column size of first matrix: ");
+                scanf("%d %d", &r1, &c1);
+                printf("Enter row size and column size of second matrix: ");
+                scanf("%d %d", &r2, &c2);
+
+                if (r1 <= 0 || c1 <= 0 || r2 <= 0 || c2 <= 0) {
+                    printf("Invalid matrix dimensions! Rows and columns must be positive.\n");
+                } else if (r1 != r2 || c1 != c2) {
+                    printf("Matrix subtraction is not possible.\n");
+                } else {
+                    int a[r1][c1], b[r2][c2], result[r1][c1];
+
+                    printf("Enter first matrix:\n");
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            scanf("%d", &a[i][j]);
+                        }
+}
+
+                    printf("Enter second matrix:\n");
+                    for (int i = 0; i < r2; i++) {
+                        for (int j = 0; j < c2; j++) {
+                            scanf("%d", &b[i][j]);
+                        }
+                    }
+
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            result[i][j] = a[i][j] - b[i][j];
+                        }
+                    }
+
+                    printf("Result:\n");
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            printf("%d ", result[i][j]);
+                        }
+                        printf("\n");
+                    }
+                }
+                break;
+
+            case 3: // Matrix Multiplication
+                printf("Enter row size and column size of first matrix: ");
+                scanf("%d %d", &r1, &c1);
+printf("Enter row size and column size of second matrix: ");
+                scanf("%d %d", &r2, &c2);
+
+                if (r1 <= 0 || c1 <= 0 || r2 <= 0 || c2 <= 0) {
+                    printf("Invalid matrix dimensions! Rows and columns must be positive.\n");
+                } else if (c1 != r2) {
+                    printf("Matrix multiplication is not possible.\n");
+                    printf("Matrix multiplication is possible only if column size of 1st matrix is equal to row size of 2nd matrix.\n");
+                } else {
+                    int a[r1][c1], b[r2][c2], result[r1][c2];
+
+                    printf("Enter first matrix:\n");
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            scanf("%d", &a[i][j]);
+                        }
+                    }
+
+                    printf("Enter second matrix:\n");
+                    for (int i = 0; i < r2; i++) {
+                        for (int j = 0; j < c2; j++) {
+                            scanf("%d", &b[i][j]);
+                        }
+                    }
+
+                    for (int i = 0; i < r1; i++) {
+for (int j = 0; j < c2; j++) {
+                            result[i][j] = 0;
+                            for (int k = 0; k < c1; k++) {
+                                result[i][j] += a[i][k] * b[k][j];
+                            }
+                        }
+                    }
+
+                    printf("Result:\n");
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c2; j++) {
+                            printf("%d ", result[i][j]);
+                        }
+                        printf("\n");
+                    }
+                }
+                break;
+
+            case 4: // Matrix Transpose
+                printf("Enter row size and column size of matrix: ");
+                scanf("%d %d", &r1, &c1);
+
+                if (r1 <= 0 || c1 <= 0) {
+                    printf("Invalid matrix dimensions! Rows and columns must be positive.\n");
+                } else {
+                    int a[r1][c1], result[c1][r1];
+
+                    printf("Enter matrix elements:\n");
+for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            scanf("%d", &a[i][j]);
+                        }
+                    }
+
+                    for (int i = 0; i < r1; i++) {
+                        for (int j = 0; j < c1; j++) {
+                            result[j][i] = a[i][j];
+                        }
+                    }
+
+                    printf("Transpose of the matrix:\n");
+                    for (int i = 0; i < c1; i++) {
+                        for (int j = 0; j < r1; j++) {
+                            printf("%d ", result[i][j]);
+                        }
+                        printf("\n");
+                    }
+                }
+                break;
+
+            case 5: // Exit
+                printf("Exiting the program...\n");
+                return 0;
+
+            default:
+printf("Invalid choice! Please enter a number between 1 and 5.\n");
+        }
+    }
+
+    return 0;
+}
